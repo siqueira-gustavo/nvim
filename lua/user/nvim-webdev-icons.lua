@@ -4,7 +4,7 @@ if not status_ok then
 end
 
 nvim_web_devicons.set_icon {
-  sh = {
+  pwsh = {
     icon = "",
     color = "#1DC123",
     cterm_color = "61",

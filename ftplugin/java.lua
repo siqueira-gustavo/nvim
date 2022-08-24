@@ -24,6 +24,9 @@ if vim.fn.has "mac" == 1 then
 elseif vim.fn.has "unix" == 1 then
   WORKSPACE_PATH = home .. "/workspace/"
   CONFIG = "linux"
+elseif vim.fn.has "windows" == 1 then
+  WORKSPACE_PATH = home .. "\\workspace\\"
+  CONFIG = "win"
 else
   print "Unsupported system"
 end
@@ -49,12 +52,16 @@ JAVA_DAP_ACTIVE = true
 local bundles = {}
 
 if JAVA_DAP_ACTIVE then
-  vim.list_extend(bundles, vim.split(vim.fn.glob(home .. "/.config/nvim/vscode-java-test/server/*.jar"), "\n"))
+  vim.list_extend(
+    bundles,
+    vim.split(vim.fn.glob(home .. "\\AppData\\Local\\nvim\\vscode-java-test\\server\\*.jar"), "\n")
+  )
   vim.list_extend(
     bundles,
     vim.split(
       vim.fn.glob(
-        home .. "/.config/nvim/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar"
+        home
+          .. "\\AppData\\Local\\nvim\\java-debug\\com.microsoft.java.debug.plugin\\target\\com.microsoft.java.debug.plugin-*.jar"
       ),
       "\n"
     )
@@ -76,7 +83,7 @@ local config = {
     "-Declipse.product=org.eclipse.jdt.ls.core.product",
     "-Dlog.protocol=true",
     "-Dlog.level=ALL",
-    "-javaagent:" .. home .. "/.local/share/nvim/lsp_servers/jdtls/lombok.jar",
+    "-javaagent:" .. home .. "\\AppData\\Local\\nvim-data\\lsp_servers\\jdtls\\lombok.jar",
     "-Xms1g",
     "--add-modules=ALL-SYSTEM",
     "--add-opens",
@@ -86,14 +93,14 @@ local config = {
 
     -- 💀
     "-jar",
-    vim.fn.glob(home .. "/.local/share/nvim/lsp_servers/jdtls/plugins/org.eclipse.equinox.launcher_*.jar"),
+    vim.fn.glob(home .. "\\AppData\\Local\\nvim-data\\lsp_servers\\jdtls\\plugins\\org.eclipse.equinox.launcher_*.jar"),
     -- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^                                       ^^^^^^^^^^^^^^
     -- Must point to the                                                     Change this to
     -- eclipse.jdt.ls installation                                           the actual version
 
     -- 💀
     "-configuration",
-    home .. "/.local/share/nvim/lsp_servers/jdtls/config_" .. CONFIG,
+    home .. "\\AppData\\Local\\nvim-data\\lsp_servers\\jdtls\\config_" .. CONFIG,
     -- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^        ^^^^^^
     -- Must point to the                      Change to one of `linux`, `win` or `mac`
     -- eclipse.jdt.ls installation            Depending on your system.

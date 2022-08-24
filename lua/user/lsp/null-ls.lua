@@ -21,7 +21,8 @@ null_ls.setup {
     formatting.stylua,
     formatting.shfmt,
     formatting.google_java_format,
-    -- diagnostics.flake8,
+    diagnostics.eslint,
+    diagnostics.flake8,
     diagnostics.shellcheck,
   },
 }

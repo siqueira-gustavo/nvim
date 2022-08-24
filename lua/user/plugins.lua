@@ -1,7 +1,7 @@
 local fn = vim.fn
 
 -- Automatically install packer
-local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
+local install_path = fn.stdpath "data" .. "\\site\\pack\\packer\\start\\packer.nvim"
 ---@diagnostic disable-next-line: missing-parameter
 if fn.empty(fn.glob(install_path)) > 0 then
   PACKER_BOOTSTRAP = fn.system {
@@ -33,7 +33,7 @@ end
 -- Have packer use a popup window
 packer.init {
   -- snapshot = "july-24",
-  snapshot_path = fn.stdpath "config" .. "/snapshots",
+  snapshot_path = fn.stdpath "config" .. "\\snapshots",
   max_jobs = 50,
   display = {
     open_fn = function()
@@ -252,7 +252,7 @@ run = "./install.sh" }
   -- use "lunarvim/vim-solidity"
   -- use "tpope/vim-repeat"
   -- use "Shatur/neovim-session-manager"
-  -- use "metakirby5/codi.vim"
+  use "metakirby5/codi.vim"
   -- use { "nyngwang/NeoZoom.lua", branch = "neo-zoom-original" }
   -- use "rcarriga/cmp-dap"
   -- use "filipdutescu/renamer.nvim"

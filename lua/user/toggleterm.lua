@@ -3,6 +3,16 @@ if not status_ok then
   return
 end
 
+-- Enable powershell as your default shell
+vim.opt.shell = "pwsh.exe -NoLogo"
+vim.opt.shellcmdflag =
+  "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;"
+vim.cmd [[
+		let &shellredir = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
+		let &shellpipe = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
+		set shellquote= shellxquote=
+  ]]
+
 toggleterm.setup {
   size = 20,
   open_mapping = [[<m-0>]],
@@ -68,16 +78,16 @@ function _NODE_TOGGLE()
   node:toggle()
 end
 
-local ncdu = Terminal:new { cmd = "ncdu", hidden = true }
+local btm = Terminal:new { cmd = "btm", hidden = true }
 
-function _NCDU_TOGGLE()
-  ncdu:toggle()
+function _BTM_TOGGLE()
+  btm:toggle()
 end
 
-local htop = Terminal:new { cmd = "htop", hidden = true }
+local ntop = Terminal:new { cmd = "ntop", hidden = true }
 
-function _HTOP_TOGGLE()
-  htop:toggle()
+function _NTOP_TOGGLE()
+  ntop:toggle()
 end
 
 local python = Terminal:new { cmd = "python", hidden = true }

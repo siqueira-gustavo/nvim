@@ -205,6 +205,7 @@ cmp.setup {
           "\n",
         },
       },
+
       group_index = 2,
     },
     {
