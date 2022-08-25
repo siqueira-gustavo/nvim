@@ -78,7 +78,12 @@ return packer.startup(function(use)
   use "j-hui/fidget.nvim"
   use "lvimuser/lsp-inlayhints.nvim"
   -- use "simrat39/inlay-hints.nvim"
-  use "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
+  use {
+    "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+    config = function()
+      require("lsp_lines").setup()
+    end,
+  }
 
   -- Completion
   use "christianchiarulli/nvim-cmp"
@@ -90,8 +95,13 @@ return packer.startup(function(use)
   use "hrsh7th/cmp-emoji"
   use "hrsh7th/cmp-nvim-lua"
   use "zbirenbaum/copilot-cmp"
-  use { "tzachar/cmp-tabnine", commit = "1a8fd2795e4317fd564da269cc64a2fa17ee854e", 
-run = "./install.sh" }
+  use {
+    "tzachar/cmp-tabnine",
+    commit = "1a8fd2795e4317fd564da269cc64a2fa17ee854e",
+    after = "nvim-cmp",
+    run = "pwsh ./install.ps1",
+    requires = "christianchiarulli/nvim-cmp",
+  }
 
   -- Snippet
   use "L3MON4D3/LuaSnip" --snippet engine
@@ -229,7 +239,13 @@ run = "./install.sh" }
 
   -- Rust
   use { "christianchiarulli/rust-tools.nvim", branch = "modularize_and_inlay_rewrite" }
-  use "Saecki/crates.nvim"
+  use {
+    "Saecki/crates.nvim",
+    requires = { "nvim-lua/plenary.nvim" },
+    config = function()
+      require("crates").setup()
+    end,
+  }
 
   -- Typescript TODO: set this up, also add keybinds to ftplugin
   use "jose-elias-alvarez/typescript.nvim"

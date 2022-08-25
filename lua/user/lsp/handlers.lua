@@ -25,8 +25,8 @@ M.setup = function()
 
   local config = {
     -- disable virtual text
-    virtual_lines = false,
-    virtual_text = false,
+    virtual_lines = true,
+    virtual_text = true,
     -- virtual_text = {
     --   -- spacing = 7,
     --   -- update_in_insert = false,
@@ -108,7 +108,7 @@ M.on_attach = function(client, bufnr)
   attach_navic(client, bufnr)
 
   if client.name == "tsserver" then
-    require("lsp-inlayhints").on_attach(bufnr, client)
+    require("lsp-inlayhints").on_attach(client, bufnr)
   end
 
   if client.name == "jdt.ls" then
