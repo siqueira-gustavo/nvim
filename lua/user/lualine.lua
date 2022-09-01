@@ -24,7 +24,7 @@ end
 
 local gray = "#32363e"
 local dark_gray = "#282C34"
-local dark_gray = "#282C34"
+-- local dark_gray = "#282C34"
 local red = "#D16969"
 local blue = "#569CD6"
 local green = "#6A9955"
@@ -366,7 +366,7 @@ local lanuage_server = {
       end
     end
 
-    local clients = vim.lsp.buf_get_clients()
+    local clients = vim.lsp.get_active_clients()
     local client_names = {}
     local copilot_active = false
 

@@ -1,5 +1,5 @@
 vim.opt_local.shiftwidth = 2
-vim.opt_local.tabstop = 2
+  vim.opt_local.tabstop = 2
 vim.opt_local.cmdheight = 2 -- more space in the neovim command line for displaying messages
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -18,6 +18,8 @@ end
 
 -- Determine OS
 local home = os.getenv "HOME"
+-- local bin = vim.fn.fnamemodify(vim.fn.getcwd(), "%:p") -- can't use the current working directory because it doesn't recognize Java Project
+local MY_CODE_FOLDER = "D:\\Users\\guss_\\Documents\\CODE"
 if vim.fn.has "mac" == 1 then
   WORKSPACE_PATH = home .. "/workspace/"
   CONFIG = "mac"
@@ -25,7 +27,7 @@ elseif vim.fn.has "unix" == 1 then
   WORKSPACE_PATH = home .. "/workspace/"
   CONFIG = "linux"
 elseif vim.fn.has "windows" == 1 then
-  WORKSPACE_PATH = home .. "\\workspace\\"
+  WORKSPACE_PATH = MY_CODE_FOLDER .. "\\.workspaces\\"
   CONFIG = "win"
 else
   print "Unsupported system"
@@ -41,9 +43,10 @@ end
 local extendedClientCapabilities = jdtls.extendedClientCapabilities
 extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
 
-local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
+-- local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
 
-local workspace_dir = WORKSPACE_PATH .. project_name
+-- local workspace_dir = WORKSPACE_PATH .. project_name
+local workspace_dir = WORKSPACE_PATH
 
 -- TODO: Testing
 
@@ -61,7 +64,7 @@ if JAVA_DAP_ACTIVE then
     vim.split(
       vim.fn.glob(
         home
-          .. "\\AppData\\Local\\nvim\\java-debug\\com.microsoft.java.debug.plugin\\target\\com.microsoft.java.debug.plugin-*.jar"
+          .. "\\AppData\\Local\\nvim\\java-debug\\com.microsoft.java.debug.plugin\\target\\com.microsoft.java.debug.plugin-0.38.0.jar"
       ),
       "\n"
     )

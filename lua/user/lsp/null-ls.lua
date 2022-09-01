@@ -20,10 +20,11 @@ null_ls.setup {
     formatting.black.with { extra_args = { "--fast" } },
     formatting.stylua,
     formatting.shfmt,
-    formatting.google_java_format,
+    formatting.clang_format, -- 
+    -- formatting.google_java_format, -- not working. idk why
     diagnostics.eslint,
     diagnostics.flake8,
-    diagnostics.shellcheck,
+    diagnostics.shellcheck
   },
 }
 
@@ -45,7 +46,7 @@ local unwrap = {
             col = col,
             end_col = end_col,
             source = "unwrap",
-            message = "hey " .. os.getenv("USER") .. ", don't forget to handle this" ,
+            message = "hey " .. os.getenv("USERNAME") .. ", don't forget to handle this" ,
             severity = 2,
           })
         end

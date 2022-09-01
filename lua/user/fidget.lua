@@ -4,3 +4,4 @@ if not status_ok then
 end
 
 fidget.setup()
+vim.api.nvim_create_autocmd("VimLeavePre", { command = [[silent! FidgetClose]] })

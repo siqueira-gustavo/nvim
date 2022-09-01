@@ -25,8 +25,8 @@ M.setup = function()
 
   local config = {
     -- disable virtual text
-    virtual_lines = true,
-    virtual_text = true,
+    virtual_lines = true, -- this enables virtual_lines to be shown below the line the error with a line pointing to the error. 
+    virtual_text = false, -- this enables virtual_text to be shown in the same line as the error. Turn it to false when virtual lines is enabled, beacuse the message displayed will be the same.
     -- virtual_text = {
     --   -- spacing = 7,
     --   -- update_in_insert = false,

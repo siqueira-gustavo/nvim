@@ -150,7 +150,7 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, {
 })
 
 vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
-  pattern = { "*" },
+  pattern = { "*.*" },
   callback = function()
     vim.cmd "checktime"
   end,
