@@ -78,12 +78,12 @@ return packer.startup(function(use)
   use "j-hui/fidget.nvim"
   use "lvimuser/lsp-inlayhints.nvim"
   -- use "simrat39/inlay-hints.nvim"
-  use {
-    "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-    config = function()
-      require("lsp_lines").setup()
-    end,
-  }
+  -- use {
+  --   "https://git.sr.ht/~whynothugo/lsp_lines.nvim",            -- to workaround this annoying issue with Source Hut, install it manually into neovim's plugin directory:
+  --   config = function()                                        -- os.getenv(LOCALAPPDATA) .. \\nvim-data\\site\\pack\\packer\\start\\
+  --     require("lsp_lines").setup()                             -- and then clone this repo
+  --   end,                                                       -- git clone https://git.sr.ht/~whynothugo/lsp_lines.nvim
+  -- }
 
   -- Completion
   use "christianchiarulli/nvim-cmp"
@@ -136,7 +136,8 @@ return packer.startup(function(use)
 
   -- Color
   use "NvChad/nvim-colorizer.lua"
-  use "ziontee113/color-picker.nvim"
+  -- use "ziontee113/color-picker.nvim"
+  use "nvim-colortils/colortils.nvim"
 
   -- Colorschemes
   use "lunarvim/onedarker.nvim"
