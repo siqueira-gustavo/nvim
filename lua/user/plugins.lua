@@ -99,7 +99,7 @@ return packer.startup(function(use)
     "tzachar/cmp-tabnine",
     commit = "1a8fd2795e4317fd564da269cc64a2fa17ee854e",
     after = "nvim-cmp",
-    run = "pwsh ./install.ps1",
+    run = "pwsh .\\install.ps1",
     requires = "christianchiarulli/nvim-cmp",
   }
 
@@ -184,8 +184,8 @@ return packer.startup(function(use)
 
   -- Comment
   use "numToStr/Comment.nvim"
-  -- use "folke/todo-comments.nvim"
-  use "B4mbus/todo-comments.nvim"
+  use "folke/todo-comments.nvim"
+  -- use "B4mbus/todo-comments.nvim"
 
   -- Terminal
   use "akinsho/toggleterm.nvim"
